@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godot Mod Test", "Godot Mod Test.csproj", "{7B235BEE-3B20-4DF0-B20B-4E2900679D81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameApi", "..\C#\GameApi\GameApi.csproj", "{E752E84A-4116-49D9-852D-130437CE2DDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstPlugin", "..\MyFirstPlugin\MyFirstPlugin.csproj", "{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Tools|Any CPU = Tools|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B235BEE-3B20-4DF0-B20B-4E2900679D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B235BEE-3B20-4DF0-B20B-4E2900679D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B235BEE-3B20-4DF0-B20B-4E2900679D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B235BEE-3B20-4DF0-B20B-4E2900679D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B235BEE-3B20-4DF0-B20B-4E2900679D81}.Tools|Any CPU.ActiveCfg = Tools|Any CPU
+		{7B235BEE-3B20-4DF0-B20B-4E2900679D81}.Tools|Any CPU.Build.0 = Tools|Any CPU
+		{E752E84A-4116-49D9-852D-130437CE2DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E752E84A-4116-49D9-852D-130437CE2DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E752E84A-4116-49D9-852D-130437CE2DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E752E84A-4116-49D9-852D-130437CE2DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E752E84A-4116-49D9-852D-130437CE2DDD}.Tools|Any CPU.ActiveCfg = Release|Any CPU
+		{E752E84A-4116-49D9-852D-130437CE2DDD}.Tools|Any CPU.Build.0 = Release|Any CPU
+		{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}.Tools|Any CPU.ActiveCfg = Release|Any CPU
+		{506E59E8-3D7E-4D09-BED1-2961A8C90DF9}.Tools|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

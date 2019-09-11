@@ -1,0 +1,5 @@
+.mono/temp
+[Bb]in
+[Oo]bj
+*.suo
+**/Godot/Plugins/*
