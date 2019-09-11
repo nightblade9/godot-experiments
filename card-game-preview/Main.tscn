@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Deck.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource( 1 )]
+position = Vector2( -2, -1 )
+Creature = "Brain"
+
+[node name="Deck" parent="." instance=ExtResource( 2 )]
+visible = false
+Card1 = "Jellyfish"
+Card3 = "Mushroom"
