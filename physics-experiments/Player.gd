@@ -4,6 +4,7 @@ const GRAVITY = 400
 const MOVE_SPEED = 300
 const JUMP_SPEED = -200
 var velocity = Vector2(0, 0)
+var touching_antigrav = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +12,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.velocity.y += delta * GRAVITY
+	var applied_gravity = GRAVITY
+	if touching_antigrav:
+		applied_gravity = -GRAVITY
+		
+	self.velocity.y += delta * applied_gravity
 	self.move_and_slide(velocity)
 
 func _input(event):
