@@ -7,7 +7,6 @@ radius = 100.0
 
 [node name="Antigravity" type="Area2D"]
 editor/display_folded = true
-position = Vector2( 767.961, 341.723 )
 space_override = 3
 gravity_vec = Vector2( 0, -1 )
 linear_damp = 0.0

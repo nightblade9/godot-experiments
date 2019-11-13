@@ -10,8 +10,12 @@ script = ExtResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
-position = Vector2( 147.847, 475.323 )
+position = Vector2( 569.789, 567.854 )
 
 [node name="Floor2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 497.376, 451.038 )
-rotation = -0.785398
+position = Vector2( 160.563, 745.287 )
+rotation = 1.5708
+
+[node name="Floor3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 938.563, 745.287 )
+rotation = 1.5708

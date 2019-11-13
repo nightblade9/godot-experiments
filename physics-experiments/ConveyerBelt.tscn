@@ -1,29 +1,28 @@
 [gd_scene load_steps=4 format=2]
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.666667, 0, 0, 1, 1, 0.243137, 0.243137, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 64, 16 )
 
 [node name="Conveyer" type="StaticBody2D"]
-position = Vector2( 270.775, 403.24 )
 constant_linear_velocity = Vector2( 50, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.671324, 0.104675 )
 scale = Vector2( 0.0622435, 31.3555 )
-texture = SubResource( 8 )
+texture = SubResource( 2 )
 region_rect = Rect2( 128, 32, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 9 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
