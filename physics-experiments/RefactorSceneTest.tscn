@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ConveyerBelt.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Antigravity.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Block.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource( 1 )]
+position = Vector2( 601.841, 232.973 )
+rotation = -0.523599
+
+[node name="Conveyer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 61.4032, 98.8953 )
+
+[node name="Conveyer2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 167.168, 148.54 )
+
+[node name="Conveyer3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 275.092, 202.502 )
+
+[node name="Conveyer4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 175.802, 439.934 )
+constant_linear_velocity = Vector2( -50, 0 )
+
+[node name="Antigravity" parent="." instance=ExtResource( 3 )]
+position = Vector2( 116.102, 313.663 )
+
+[node name="Block" parent="." instance=ExtResource( 4 )]
+position = Vector2( 43.1695, 34.5356 )
