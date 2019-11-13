@@ -10,7 +10,7 @@ func get_input():
 	velocity.x = 0
 	var right = Input.is_action_pressed('ui_right')
 	var left = Input.is_action_pressed('ui_left')
-	var jump = Input.is_action_just_pressed('ui_select')
+	var jump = Input.is_action_just_pressed('ui_up')
 
 	if is_on_floor() and jump:
 		velocity.y = JUMP_SPEED
