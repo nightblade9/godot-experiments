@@ -6,9 +6,18 @@ const JUMP_SPEED = -200
 var velocity = Vector2(0, 0)
 var touching_antigrav = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func get_input():
+	velocity.x = 0
+	var right = Input.is_action_pressed('ui_right')
+	var left = Input.is_action_pressed('ui_left')
+	var jump = Input.is_action_just_pressed('ui_select')
+
+	if is_on_floor() and jump:
+		velocity.y = JUMP_SPEED
+	if right:
+		velocity.x += MOVE_SPEED
+	if left:
+		velocity.x -= MOVE_SPEED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,7 +26,8 @@ func _process(delta):
 		applied_gravity = -GRAVITY
 		
 	self.velocity.y += delta * applied_gravity
-	self.move_and_slide(velocity)
+	get_input()
+	velocity = move_and_slide(velocity, Vector2(0, -1))
 
 func _input(event):
 	if event is InputEventKey:
