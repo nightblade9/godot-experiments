@@ -1,0 +1,4 @@
+enum Turn {
+	Player,
+	Opponent
+}
