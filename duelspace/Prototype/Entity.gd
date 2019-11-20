@@ -26,7 +26,7 @@ func init(data):
 	$Sprite.region_rect.position = _SPRITES[data["name"]]
 
 func change_colour(owner):
-	if owner == Turn.Opponent:
+	if owner == Turn.Turn.Opponent:
 		$ColorRect.color = OPPONENT_COLOUR
 	else:
 		$ColorRect.color = PLAYER_COLOUR
