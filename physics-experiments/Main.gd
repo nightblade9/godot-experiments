@@ -21,3 +21,7 @@ func _on_Antigravity_body_entered(body):
 func _on_Antigravity_body_exited(body):
 	if body == $Player:
 		$Player.touching_antigrav = false
+
+
+func _on_Area2D_body_entered(body):
+	self.get_tree().reload_current_scene()
