@@ -1,16 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://world1-bg.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 10, 10 )
-texture = ExtResource( 2 )
-centered = false
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 1 )
@@ -27,3 +22,25 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
 current = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.25, 0.25 )
+motion_mirroring = Vector2( 960, 540 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0, 1, 0.623529, 1 )
+texture = ExtResource( 3 )
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.9, 0.9 )
+motion_mirroring = Vector2( 960, 540 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 1, 1, 1, 0.501961 )
+texture = ExtResource( 3 )
+centered = false
