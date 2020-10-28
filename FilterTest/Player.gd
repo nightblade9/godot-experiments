@@ -1,22 +1,23 @@
 extends KinematicBody2D
 
 const Bullet = preload("res://Bullet.tscn")
-const JumboBeam = preload("res://Beams/JumboBeam.gd")
 
 const _VELOCITY:int = 100
 
 var facing:String = "down"
 
 var _last_velocity:Vector2
+var _switcher
 
 # Jumbo
 # Wave
 # Spread
 # Explode
 
-var _beams = [JumboBeam.new()]
+func initialize(switcher):
+	_switcher = switcher
 
-func _process(delta):
+func _process(_delta):
 	var velocity:Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("ui_down"):
 		velocity.y = 1
@@ -42,7 +43,7 @@ func _process(delta):
 			b.velocity = _last_velocity
 			
 		var bullets = [b]
-		for beam in _beams:
+		for beam in _switcher.get_filters():
 			bullets = beam.fire(bullets)
 		
 		for bullet in bullets:
