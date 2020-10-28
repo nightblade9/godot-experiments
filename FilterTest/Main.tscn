@@ -11,31 +11,31 @@ script = ExtResource( 4 )
 [node name="ModeSwitcher" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 502, 281 )
+position = Vector2( 157.389, 278.003 )
 
 [node name="Wall" parent="." instance=ExtResource( 2 )]
-position = Vector2( 366, 174 )
+position = Vector2( 614.719, 197.973 )
 
 [node name="Wall2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 518, 64 )
+position = Vector2( 766.719, 87.9728 )
 
 [node name="Wall3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 684, 222 )
+position = Vector2( 932.719, 245.973 )
 
 [node name="Wall4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 166, 313 )
+position = Vector2( 414.719, 336.973 )
 
 [node name="Wall5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 142, 264 )
+position = Vector2( 390.719, 287.973 )
 
 [node name="Wall6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 179, 206 )
+position = Vector2( 427.719, 229.973 )
 
 [node name="Wall7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 135, 145 )
+position = Vector2( 383.719, 168.973 )
 
 [node name="Wall8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 134, 361 )
+position = Vector2( 382.719, 384.973 )
 
 [node name="Wall9" parent="." instance=ExtResource( 2 )]
 position = Vector2( 332, 464 )
