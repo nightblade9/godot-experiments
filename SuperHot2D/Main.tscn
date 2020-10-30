@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 157.389, 278.003 )
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 614.719, 197.973 )
+
+[node name="Wall2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 766.719, 87.9728 )
+
+[node name="Wall3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 932.719, 245.973 )
+
+[node name="Wall4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 414.719, 336.973 )
+
+[node name="Wall5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 390.719, 287.973 )
+
+[node name="Wall6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 427.719, 229.973 )
+
+[node name="Wall7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 383.719, 168.973 )
+
+[node name="Wall8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 382.719, 384.973 )
+
+[node name="Wall9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 332, 464 )
+
+[node name="Wall10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 501, 531 )
+
+[node name="Wall11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 809, 434 )
+
+[node name="Wall12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 839.238, 113.98 )
