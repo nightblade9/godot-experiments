@@ -1,5 +1,6 @@
 extends Node2D
 
+const Enemy = preload("Enemy.gd")
 const Wall = preload("Wall.gd")
 
 var SPEED = 500
@@ -15,6 +16,6 @@ func _process(_delta):
 		bullet_time = 0
 
 func _on_Node2D_body_entered(body):
-	if body is Wall:
+	if body is Wall or body is Enemy:
 		body.queue_free()
 		self.queue_free()

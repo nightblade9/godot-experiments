@@ -1,5 +1,9 @@
 extends Node2D
 
+func _ready():
+	for enemy in $Enemies.get_children():
+		enemy.initialize($Player)
+
 func _process(_delta) -> void:
 	if BulletTime.bullet_time > 0:
 		var remaining = BulletTime.bullet_time
