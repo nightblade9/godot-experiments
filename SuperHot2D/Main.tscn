@@ -23,10 +23,10 @@ position = Vector2( 766.719, 87.9728 )
 position = Vector2( 932.719, 245.973 )
 
 [node name="Wall4" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 414.719, 336.973 )
+position = Vector2( 83.719, 493.973 )
 
 [node name="Wall5" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 390.719, 287.973 )
+position = Vector2( 416.719, 503.973 )
 
 [node name="Wall6" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 427.719, 229.973 )
@@ -35,7 +35,7 @@ position = Vector2( 427.719, 229.973 )
 position = Vector2( 383.719, 168.973 )
 
 [node name="Wall8" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 382.719, 384.973 )
+position = Vector2( 589.719, 290.973 )
 
 [node name="Wall9" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 332, 464 )

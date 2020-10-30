@@ -13,6 +13,5 @@ func initialize(target:Node2D) -> void:
 func _process(_delta):
 	if bullet_time > 0:
 		var direction = (_target.position - self.position).normalized()
-		print("%s" % (direction * _VELOCITY))
 		self.move_and_slide(direction * _VELOCITY)
 		bullet_time = 0
