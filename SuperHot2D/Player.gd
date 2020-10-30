@@ -8,6 +8,9 @@ var facing:String = "down"
 
 var _last_velocity:Vector2
 
+func _ready():
+	self.add_to_group("bullet time")
+
 func _process(_delta):
 	var velocity:Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("ui_down"):
