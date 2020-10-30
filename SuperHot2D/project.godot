@@ -19,6 +19,10 @@ config/name="SuperHot2D"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+BulletTime="*res://BulletTime.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
