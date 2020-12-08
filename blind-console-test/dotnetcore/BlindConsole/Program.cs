@@ -6,7 +6,8 @@ namespace BlindConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var console = new ConsoleManager();
+            console.Start();
         }
     }
 }
