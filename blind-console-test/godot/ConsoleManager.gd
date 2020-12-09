@@ -2,6 +2,7 @@ extends Node
 
 signal on_input
 
+# Must match C# code
 # Where we write stuff to the console
 const TO_CONSOLE_FILE = "../to-console.txt"
 # Where we read responses the user typed into the console
@@ -17,11 +18,11 @@ func write(message:String) -> void:
 	var file = File.new()
 	
 	# Ensure exists
-	if not file.file_exists(IPC_COMMANDS_FILENAME):
-		file.open(IPC_COMMANDS_FILENAME, File.WRITE_READ)
+	if not file.file_exists(TO_CONSOLE_FILE):
+		file.open(TO_CONSOLE_FILE, File.WRITE_READ)
 		file.close()
 		
-	file.open(IPC_COMMANDS_FILENAME, File.READ_WRITE)
+	file.open(TO_CONSOLE_FILE, File.READ_WRITE)
 	file.seek_end()
 	file.store_string(message + "\n")
 	file.close()
