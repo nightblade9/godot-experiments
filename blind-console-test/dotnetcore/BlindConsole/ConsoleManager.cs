@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 class ConsoleManager
@@ -15,20 +16,17 @@ class ConsoleManager
 
     public void Start()
     {
-        string buffer = "";
+        var readBuffer = new char[4096];
+
         this.backgroundThread = new Thread(() => {
             using (var fs = new FileStream("test.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete)) {
                 using (var reader = new StreamReader(fs)) {
                     while (this.isRunning) {
-                        var line = reader.ReadLine();
-                        if (line != null) {
-                            buffer += line;
-                            if (line.Contains('\n'))
-                            {
-                                Console.WriteLine(buffer);
-                                buffer = "";
-                                Console.Out.Flush();
-                            }
+                        // Will read/write in chunks of buffer.Length
+                        var readCount = reader.ReadBlock(readBuffer, 0, readBuffer.Length);
+                        if (readCount > 0) {
+                            var slice = new ArraySegment<char>(readBuffer, 0, readCount);
+                            Console.Write(slice.ToArray());
                         }
                         Thread.Sleep(100);
                     }
