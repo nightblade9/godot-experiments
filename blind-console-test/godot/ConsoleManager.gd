@@ -1,30 +1,37 @@
 extends Node
 
-# Must match C# code
-# Where we write stuff to the console
-const TO_CONSOLE_FILE = "../to-console.txt"
-# Where we read responses the user typed into the console
-const TO_GODOT_FILE = "../to-godot.txt"
+const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
+
+# Make sure it matches what .NET is using
+const SQLITE_FILE = "../ipc.sqlite.db"
+const MESSAGES_TABLE_NAME = "ipc_messages"
 
 func _ready() -> void:
-	# delete files if they pre-existed
+	_initialize_database()
+
+func write_message(text:String) -> void:
+	var db = _connect_to_db()
+	db.insert_row(MESSAGES_TABLE_NAME, { "target": "console", "message": text })
+	db.close_db()
+
+func _initialize_database() -> void:
 	var directory = Directory.new()
-	directory.remove(TO_CONSOLE_FILE)
-	directory.remove(TO_GODOT_FILE)
+	directory.remove(SQLITE_FILE)
+
+	var db = _connect_to_db()
+	var table_definition : Dictionary = Dictionary()
+	table_definition["id"] = {"data_type":"int", "primary_key": true, "auto_increment": true }
+	table_definition["target"] = { "data_type":"char(64)", "not_null": true }
+	table_definition["message"] = { "data_type":"text", "not_null": true }
 	
-func write(message:String) -> void:
-	var file = File.new()
+	db.create_table(MESSAGES_TABLE_NAME, table_definition)
 	
-	# Ensure exists
-	if not file.file_exists(TO_CONSOLE_FILE):
-		file.open(TO_CONSOLE_FILE, File.WRITE_READ)
-		file.close()
-		
-	var result = file.open(TO_CONSOLE_FILE, File.WRITE)
-	# Strange: works if you open the file in VSCode and add to it, but not GD...
-	if (result != OK):
-		push_error("Failed to open file for writing; result was " + str(result))
-	file.seek_end()
-	file.store_string(message + "\n")
-	file.close()
-	
+	db.close_db()
+
+func _connect_to_db() -> SQLite:
+	var db = SQLite.new()
+	db.path = SQLITE_FILE
+	db.verbose_mode = true
+	# Open the database using the db_name found in the path variable
+	db.open_db()
+	return db
