@@ -5,11 +5,11 @@ using System.Threading;
 
 class ConsoleManager
 {
-    // Must match C# code
+    // Must match C# code, with an additional ".."
     // Where we write stuff to the console
-    private readonly string TO_CONSOLE_FILE = Path.Join("..", "to-console.txt");
+    private readonly string TO_CONSOLE_FILE = Path.Join("..", "..", "to-console.txt");
     // Where we read responses the user typed into the console
-    private readonly string TO_GODOT_FILE = Path.Join("..", "to-godot.txt");
+    private readonly string TO_GODOT_FILE = Path.Join("..", "..", "to-godot.txt");
 
     private Thread backgroundThread;
     private bool isRunning = false;
@@ -19,7 +19,13 @@ class ConsoleManager
         var readBuffer = new char[4096];
 
         this.backgroundThread = new Thread(() => {
-            using (var fs = new FileStream("test.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete)) {
+            // Wait for Godot to launch and create the file. Easier for debugging.
+            while (!File.Exists(TO_CONSOLE_FILE))
+            {
+                Thread.Sleep(100);
+            }
+
+            using (var fs = new FileStream(TO_CONSOLE_FILE, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete)) {
                 using (var reader = new StreamReader(fs)) {
                     while (this.isRunning) {
                         // Will read/write in chunks of buffer.Length

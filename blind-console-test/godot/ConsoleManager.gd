@@ -1,7 +1,5 @@
 extends Node
 
-signal on_input
-
 # Must match C# code
 # Where we write stuff to the console
 const TO_CONSOLE_FILE = "../to-console.txt"
@@ -22,7 +20,10 @@ func write(message:String) -> void:
 		file.open(TO_CONSOLE_FILE, File.WRITE_READ)
 		file.close()
 		
-	file.open(TO_CONSOLE_FILE, File.READ_WRITE)
+	var result = file.open(TO_CONSOLE_FILE, File.WRITE)
+	# Strange: works if you open the file in VSCode and add to it, but not GD...
+	if (result != OK):
+		push_error("Failed to open file for writing; result was " + str(result))
 	file.seek_end()
 	file.store_string(message + "\n")
 	file.close()
