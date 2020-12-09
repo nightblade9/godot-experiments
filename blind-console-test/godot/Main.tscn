@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://ColorRect.gd" type="Script" id=2]
+[ext_resource path="res://Lato-Black.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,5 +23,14 @@ margin_bottom = 20.0
 text = "Whee!"
 __meta__ = {
 "_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "..."
+__meta__ = {
+"_edit_use_anchors_": false
 }
 [connection signal="pressed" from="ColorRect/ColorRect" to="." method="_on_ColorRect_pressed"]
