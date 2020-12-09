@@ -15,9 +15,24 @@ class ConsoleManager
 
     public void Start()
     {
+        string buffer = "";
         this.backgroundThread = new Thread(() => {
-            while (this.isRunning) {
-                Thread.Sleep(100);
+            using (var fs = new FileStream("test.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete)) {
+                using (var reader = new StreamReader(fs)) {
+                    while (this.isRunning) {
+                        var line = reader.ReadLine();
+                        if (line != null) {
+                            buffer += line;
+                            if (line.Contains('\n'))
+                            {
+                                Console.WriteLine(buffer);
+                                buffer = "";
+                                Console.Out.Flush();
+                            }
+                        }
+                        Thread.Sleep(100);
+                    }
+                }
             }
         });
         
