@@ -1,11 +1,12 @@
 extends Node2D
 
 func _ready():
-	_write("Hello, world!")
+	ConsoleManager.write_message("Hello, world!")
+	var shared_data = GameData.new()
+	shared_data.num_open = 0
+	
+	for child in get_children():
+		child.initialize(shared_data)
 
-func _on_ColorRect_pressed():
-	_write("clicked at " + str($ColorRect.rotation_degrees))
-
-func _write(message:String) -> void:
-	ConsoleManager.write_message(message)
-	$Label.text = message
+class GameData extends Resource:
+	var num_open = 0
