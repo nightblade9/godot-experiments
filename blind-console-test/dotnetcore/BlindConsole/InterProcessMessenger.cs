@@ -4,6 +4,7 @@ using System.Threading;
 
 class InterProcessMessenger
 {
+    private DatabaseManager db = new DatabaseManager();
     private Thread backgroundThread;
     private bool isRunning = false;
     private Action<string> onMessageCallback;
@@ -15,8 +16,6 @@ class InterProcessMessenger
 
     public void Start()
     {
-        var db = new DatabaseManager();
-
         this.backgroundThread = new Thread(() => {
             // Wait for Godot to launch and create the file. Easier for debugging.
             while (!File.Exists(db.SQLITE_FILE))
@@ -25,7 +24,7 @@ class InterProcessMessenger
             }
 
             while (this.isRunning) {
-                var messages = db.GetMessages("console");
+                var messages = db.GetMessages("Console");
                 foreach (var message in messages)
                 {
                     this.onMessageCallback.Invoke(message);
@@ -36,6 +35,11 @@ class InterProcessMessenger
         
         this.isRunning = true;
         backgroundThread.Start();
+    }
+
+    public void WriteMessage(string json)
+    {
+        db.WriteMessage(json);       
     }
 
     ~InterProcessMessenger()

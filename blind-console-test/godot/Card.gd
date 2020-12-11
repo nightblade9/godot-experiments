@@ -1,5 +1,7 @@
 extends Area2D
 
+var InterProcessMessenger = preload("res://InterProcessMessenger.gd") # DEBUG
+
 export var tile:int = 1
 var _state:String = "closed" # closed, open, or completed
 var _clickable = true
@@ -17,6 +19,8 @@ func _on_Sprite_input_event(_viewport, event, _shape_idx):
 		var button = event as InputEventMouseButton
 		if button.pressed:
 			self._on_toggle()
+			var ipc = InterProcessMessenger.new()
+			ipc.write_message("Clicked on %s" % self)
 
 func _on_toggle() -> void:
 	if len(_shared_data.open_tiles) < 2 and self._state == "closed":
@@ -25,7 +29,7 @@ func _on_toggle() -> void:
 		_update_sprite()
 		_shared_data.open_tiles.append(self)
 		
-func _process(delta):
+func _process(_delta):
 	if self._state != "complete":
 		if len(_shared_data.open_tiles) == 2 and self._state == "open":
 			# if not match, close tiles; open matching is done in Main

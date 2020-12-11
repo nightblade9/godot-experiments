@@ -43,4 +43,18 @@ public class DatabaseManager
             return jsonTextsRead;
         }
     }
+
+    public void WriteMessage(string json)
+    {
+        using (var connection = new SqliteConnection($"Data Source={SQLITE_FILE}"))
+        {
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = $"INSERT INTO {MESSAGES_TABLE_NAME} (target, message) values ($target, $message)";
+            command.Parameters.AddWithValue("$target", "Godot");
+            command.Parameters.AddWithValue("$message", json);
+            command.ExecuteNonQuery();
+        }
+    }
 }

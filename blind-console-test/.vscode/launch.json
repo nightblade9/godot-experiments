@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/dotnetcore/BlindConsole/bin/Debug/netcoreapp3.1/BlindConsole.dll",
             "args": [],
             "cwd": "${workspaceFolder}/dotnetcore/BlindConsole",
-            "console": "internalConsole",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {
