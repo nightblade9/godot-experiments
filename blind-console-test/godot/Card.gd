@@ -1,14 +1,17 @@
 extends Area2D
 
-var InterProcessMessenger = preload("res://InterProcessMessenger.gd") # DEBUG
+const InterProcessMessenger = preload("res://IPC/InterProcessMessenger.gd")
 
 export var tile:int = 1
 var _state:String = "closed" # closed, open, or completed
 var _clickable = true
 var _shared_data:Resource
+var _ipc:InterProcessMessenger
 
 func initialize(shared_data:Resource) -> void:
 	_shared_data = shared_data
+	_ipc = InterProcessMessenger.new()
+	add_child(_ipc)
 
 func complete():
 	self._state = "complete"
@@ -19,8 +22,7 @@ func _on_Sprite_input_event(_viewport, event, _shape_idx):
 		var button = event as InputEventMouseButton
 		if button.pressed:
 			self._on_toggle()
-			var ipc = InterProcessMessenger.new()
-			ipc.write_message("Clicked on %s" % self)
+			_ipc.write_message("Clicked on %s" % self)
 
 func _on_toggle() -> void:
 	if len(_shared_data.open_tiles) < 2 and self._state == "closed":

@@ -1,7 +1,7 @@
 extends Node2D
 
 var Card = preload("res://Card.gd")
-var InterProcessMessenger = preload("res://InterProcessMessenger.gd")
+var InterProcessMessenger = preload("res://IPC/InterProcessMessenger.gd")
 
 var _shared_data = GameData.new()
 
