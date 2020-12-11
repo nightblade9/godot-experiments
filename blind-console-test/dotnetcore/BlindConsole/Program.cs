@@ -6,7 +6,7 @@ namespace BlindConsole
     {
         static void Main(string[] args)
         {
-            var console = new ConsoleManager();
+            var console = new InterProcessMessenger((message) => Console.WriteLine(message));
             console.Start();
         }
     }

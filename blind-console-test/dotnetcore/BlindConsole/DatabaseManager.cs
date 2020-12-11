@@ -1,7 +1,6 @@
-using System;
+using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.Data.Sqlite;
 
 public class DatabaseManager
 {
@@ -9,24 +8,27 @@ public class DatabaseManager
     internal readonly string SQLITE_FILE = Path.Combine("..", "..", "ipc.sqlite.db");
     private const string MESSAGES_TABLE_NAME = "ipc_messages";
 
-    public void LolWUT()
+    public IEnumerable<string> GetMessages(string target)
     {
         using (var connection = new SqliteConnection($"Data Source={SQLITE_FILE}"))
         {
             connection.Open();
 
             var command = connection.CreateCommand();
-            command.CommandText = $"SELECT * FROM {MESSAGES_TABLE_NAME} WHERE target = 'console'";
+            command.CommandText = $"SELECT * FROM {MESSAGES_TABLE_NAME} WHERE target = $target";
+            command.Parameters.AddWithValue("$target", target);
+
             var idsRead = new List<int>();
+            var jsonTextsRead = new List<string>();
 
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    var text = reader["message"].ToString();
+                    var jsonText = reader["message"].ToString();
                     var id = int.Parse(reader["id"].ToString());
                     idsRead.Add(id);
-                    Console.WriteLine(text);
+                    jsonTextsRead.Add(jsonText);
                 }
             }
 
@@ -37,6 +39,8 @@ public class DatabaseManager
                 command.Parameters.AddWithValue("$id", id);
                 command.ExecuteNonQuery();
             }
+
+            return jsonTextsRead;
         }
     }
 }

@@ -1,10 +1,17 @@
+using System;
 using System.IO;
 using System.Threading;
 
-class ConsoleManager
+class InterProcessMessenger
 {
     private Thread backgroundThread;
     private bool isRunning = false;
+    private Action<string> onMessageCallback;
+
+    public InterProcessMessenger(Action<string> onMessageCallback)
+    {
+        this.onMessageCallback = onMessageCallback;
+    }
 
     public void Start()
     {
@@ -18,8 +25,11 @@ class ConsoleManager
             }
 
             while (this.isRunning) {
-                // Will read/write in chunks of buffer.Length
-                db.LolWUT();
+                var messages = db.GetMessages("console");
+                foreach (var message in messages)
+                {
+                    this.onMessageCallback.Invoke(message);
+                }
                 Thread.Sleep(100);
             }
         });
@@ -28,7 +38,7 @@ class ConsoleManager
         backgroundThread.Start();
     }
 
-    ~ConsoleManager()
+    ~InterProcessMessenger()
     {
         this.isRunning = false;
         backgroundThread.Join();
