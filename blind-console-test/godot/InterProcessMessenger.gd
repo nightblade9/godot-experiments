@@ -9,9 +9,9 @@ const MESSAGES_TABLE_NAME = "ipc_messages"
 func _ready() -> void:
 	_initialize_database()
 
-func write_message(text:String) -> void:
+func write_message(json:String) -> void:
 	var db = _connect_to_db()
-	db.insert_row(MESSAGES_TABLE_NAME, { "target": "console", "message": text })
+	db.insert_row(MESSAGES_TABLE_NAME, { "target": "console", "message": json })
 	db.close_db()
 
 func _initialize_database() -> void:
@@ -22,7 +22,7 @@ func _initialize_database() -> void:
 	var table_definition : Dictionary = Dictionary()
 	table_definition["id"] = {"data_type":"int", "primary_key": true, "auto_increment": true }
 	table_definition["target"] = { "data_type":"char(64)", "not_null": true }
-	table_definition["message"] = { "data_type":"text", "not_null": true }
+	table_definition["message"] = { "data_type":"text", "not_null": true } # JSON payload
 	
 	db.create_table(MESSAGES_TABLE_NAME, table_definition)
 	

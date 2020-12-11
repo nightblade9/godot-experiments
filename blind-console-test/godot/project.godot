@@ -19,10 +19,6 @@ config/name="Blind Console Test"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-ConsoleManager="*res://ConsoleManager.gd"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "godot-sqlite" )

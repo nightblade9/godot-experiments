@@ -1,9 +1,11 @@
 extends Node2D
 
+var InterProcessMessenger = preload("res://InterProcessMessenger.gd")
 var _shared_data = GameData.new()
 
 func _ready():
-	ConsoleManager.write_message("Hello, world!")
+	var ipc = InterProcessMessenger.new()
+	ipc.write_message("Hello, world!")
 	
 	var ids = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6]
 	randomize()
