@@ -18,4 +18,12 @@ func _physics_process(delta):
 	
 	velocity = velocity * (1 - decay)
 	
-	self.move_and_slide(velocity)
+	# naive: no bounce
+	# self.move_and_slide(velocity)
+
+	# bounce code from: https://docs.godotengine.org/en/3.2/tutorials/physics/using_kinematic_body_2d.html#bouncing-reflecting
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity = velocity.bounce(collision.normal)
+		if collision.collider.has_method("hit"):
+			collision.collider.hit()
