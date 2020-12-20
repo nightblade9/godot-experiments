@@ -36,7 +36,7 @@ func _physics_process(delta):
 		
 		if consume_fuel:
 			_fuel_left -= delta * _FUEL_CONSUMPTION_RATE
-			emit_signal("used_fuel", _fuel_left)
+			emit_signal("used_fuel", _fuel_left, delta)
 		
 	velocity = velocity * (1 - decay)
 	if _fuel_left <= 0 and not consume_fuel and velocity.length() <= _STOP_VELOCITY_AMPLITUDE:

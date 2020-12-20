@@ -9,8 +9,12 @@ var _turn_number:int = 1
 func _ready():
 	_fuel_gauge.max_value = _player.MAX_FUEL
 
-func _on_Player_used_fuel(fuel_left:float):
+func _on_Player_used_fuel(fuel_left:float, delta:float):
 	_fuel_gauge.value = fuel_left
+	
+	# Tell monsters to move
+	if delta > 0:
+		pass
 
 func _on_Player_turn_over():
 	# TODO: do stuff, like increment points, apply AI, etc. first
@@ -18,7 +22,7 @@ func _on_Player_turn_over():
 	
 	
 	_player.reset_fuel()
-	_on_Player_used_fuel(_player.MAX_FUEL) # reset gauge
+	_on_Player_used_fuel(_player.MAX_FUEL, 0) # reset gauge
 	
 	_turn_number += 1
 	_turn_label.text = "Turn %s - Fuel: " % _turn_number
