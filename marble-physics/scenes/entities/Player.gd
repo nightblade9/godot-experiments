@@ -5,7 +5,7 @@ signal used_fuel
 const MAX_FUEL:int = 100
 const _SPEED:int = 10
 const _FUEL_CONSUMPTION_RATE:int = 50 # n * delta per tick
-const _STOP_VELOCITY_AMPLITUDE:int = 50
+const _STOP_VELOCITY_AMPLITUDE:int = 10
 
 var velocity:Vector2
 var decay:float = 0.01 # % per tick
@@ -35,8 +35,10 @@ func _physics_process(delta):
 			emit_signal("used_fuel", _fuel_left)
 		
 	velocity = velocity * (1 - decay)
-	if not consume_fuel and velocity.length() <= _STOP_VELOCITY_AMPLITUDE:
-		velocity = Vector2.ZERO
+	if _fuel_left <= 0 and not consume_fuel and velocity.length() <= _STOP_VELOCITY_AMPLITUDE:
+		velocity = Vector2.ZERO # Moving slow enough; stop completely.
+		_fuel_left = MAX_FUEL # Reset
+		emit_signal("used_fuel", _fuel_left) # update gauge
 	
 	# naive: no bounce
 	# self.move_and_slide(velocity)
