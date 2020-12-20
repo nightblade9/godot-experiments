@@ -101,10 +101,10 @@ position = Vector2( 261, 459 )
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="FuelBar" type="ProgressBar" parent="UI"]
-margin_left = 107.239
+margin_left = 227.239
 margin_top = 17.7622
-margin_right = 426.239
-margin_bottom = 49.7622
+margin_right = 546.239
+margin_bottom = 56.7622
 custom_styles/fg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -113,14 +113,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UI"]
+[node name="TurnLabel" type="Label" parent="UI"]
 margin_left = 26.3496
 margin_top = 15.3811
 margin_right = 98.3496
 margin_bottom = 54.3811
 custom_fonts/font = SubResource( 4 )
-text = "Fuel:"
+text = "Turn 1 - Fuel:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="turn_over" from="Game/Player" to="." method="_on_Player_turn_over"]
 [connection signal="used_fuel" from="Game/Player" to="." method="_on_Player_used_fuel"]

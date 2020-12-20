@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-signal used_fuel
+signal used_fuel # emits fuel_left
+signal turn_over
 
 const MAX_FUEL:int = 100
 const _SPEED:int = 10
@@ -11,6 +12,9 @@ var velocity:Vector2
 var decay:float = 0.01 # % per tick
 
 var _fuel_left:float = MAX_FUEL
+
+func reset_fuel():
+	_fuel_left = MAX_FUEL
 
 func _physics_process(delta):
 	var consume_fuel = false
@@ -37,8 +41,7 @@ func _physics_process(delta):
 	velocity = velocity * (1 - decay)
 	if _fuel_left <= 0 and not consume_fuel and velocity.length() <= _STOP_VELOCITY_AMPLITUDE:
 		velocity = Vector2.ZERO # Moving slow enough; stop completely.
-		_fuel_left = MAX_FUEL # Reset
-		emit_signal("used_fuel", _fuel_left) # update gauge
+		emit_signal("turn_over")
 	
 	# naive: no bounce
 	# self.move_and_slide(velocity)
