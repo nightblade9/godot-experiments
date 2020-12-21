@@ -8,8 +8,10 @@ const _ENVIRONMENT_HIT_DAMAGE = 10
 
 onready var _health_bar = $HealthBar
 
+func _physics_process(_delta):
+	self.rotation_degrees = 0 # never rotate, throws off UI, firing, etc.
+
 func _on_Bumper_body_entered(body):
-	print("%s hit by %s" % [self, body])
 	if body is Player:
 		_health_bar.value -= _PLAYER_HIT_DAMAGE
 	elif body is RigidBody2D:
