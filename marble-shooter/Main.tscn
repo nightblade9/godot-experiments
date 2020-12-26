@@ -13,33 +13,33 @@ __meta__ = {
 }
 
 [node name="Marble1" parent="Player" instance=ExtResource( 1 )]
-modulate = Color( 0, 0.647059, 1, 1 )
-position = Vector2( 105.953, 519.674 )
+modulate = Color( 0, 0.741176, 1, 1 )
+position = Vector2( 88, 448 )
 
 [node name="Marble2" parent="Player" instance=ExtResource( 1 )]
-modulate = Color( 0, 0.647059, 1, 1 )
-position = Vector2( 299.981, 520.304 )
+modulate = Color( 0, 0.741176, 1, 1 )
+position = Vector2( 392, 448 )
 
 [node name="Marble3" parent="Player" instance=ExtResource( 1 )]
-modulate = Color( 0, 0.647059, 1, 1 )
-position = Vector2( 463.141, 517.784 )
+modulate = Color( 0, 0.741176, 1, 1 )
+position = Vector2( 760, 448 )
 
 [node name="CPU" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Marble4" parent="CPU" instance=ExtResource( 1 )]
-modulate = Color( 1, 0.25098, 0, 1 )
-position = Vector2( 105.953, 135.674 )
+[node name="Marble1" parent="CPU" instance=ExtResource( 1 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 96, 120 )
 
-[node name="Marble5" parent="CPU" instance=ExtResource( 1 )]
-modulate = Color( 1, 0.25098, 0, 1 )
-position = Vector2( 299.981, 136.304 )
+[node name="Marble2" parent="CPU" instance=ExtResource( 1 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 392, 120 )
 
-[node name="Marble6" parent="CPU" instance=ExtResource( 1 )]
-modulate = Color( 1, 0.25098, 0, 1 )
-position = Vector2( 463.141, 133.784 )
+[node name="Marble3" parent="CPU" instance=ExtResource( 1 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 760, 120 )
 
 [node name="Arrow" type="Sprite" parent="."]
 visible = false
