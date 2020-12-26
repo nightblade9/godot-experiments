@@ -1,3 +1,39 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/entities/Marble.tscn" type="PackedScene" id=1]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Marble1" parent="Player" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.647059, 1, 1 )
+position = Vector2( 105.953, 519.674 )
+
+[node name="Marble2" parent="Player" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.647059, 1, 1 )
+position = Vector2( 299.981, 520.304 )
+
+[node name="Marble3" parent="Player" instance=ExtResource( 1 )]
+modulate = Color( 0, 0.647059, 1, 1 )
+position = Vector2( 463.141, 517.784 )
+
+[node name="CPU" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Marble4" parent="CPU" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.25098, 0, 1 )
+position = Vector2( 105.953, 135.674 )
+
+[node name="Marble5" parent="CPU" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.25098, 0, 1 )
+position = Vector2( 299.981, 136.304 )
+
+[node name="Marble6" parent="CPU" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.25098, 0, 1 )
+position = Vector2( 463.141, 133.784 )
