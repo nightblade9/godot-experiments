@@ -2,7 +2,7 @@ extends RigidBody2D
 
 signal on_clicked
 
-const _IMPULSE:int = 300
+const _IMPULSE:int = 500
 const _STOP_VELOCITY:int = 10
 const _DECAY:float = 0.01
 

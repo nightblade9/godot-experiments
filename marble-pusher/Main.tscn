@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/entities/Marble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/selected-arrow.png" type="Texture" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://entities/Wall.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -44,3 +45,37 @@ position = Vector2( 760, 120 )
 [node name="Arrow" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 2 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 192.217, 12.0135 )
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 830.27, 13.3484 )
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 1021.15, 308.348 )
+rotation = 1.5708
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 830.27, 588.664 )
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 613.592, 9.34388 )
+rotation = 0.261799
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 377.326, 561.968 )
+rotation = 0.261799
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 165.086, 588.664 )
+
+[node name="Wall8" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 23.5389, 393.778 )
+rotation = 1.48353
+
+[node name="Wall9" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( -0.43396, 312.352 )
+rotation = -1.48353
