@@ -34,11 +34,12 @@ func _physics_process(delta):
 			velocity.y += _SPEED
 			consume_fuel = true
 		
-		if consume_fuel:
+		if Features.limited_fuel and consume_fuel:
 			_fuel_left -= delta * _FUEL_CONSUMPTION_RATE
 			emit_signal("used_fuel", _fuel_left, delta)
 		
 	velocity = velocity * (1 - decay)
+	# Out of fuel? Slow to a stop
 	if _fuel_left <= 0 and not consume_fuel and velocity.length() <= _STOP_VELOCITY_AMPLITUDE:
 		velocity = Vector2.ZERO # Moving slow enough; stop completely.
 		emit_signal("turn_over")

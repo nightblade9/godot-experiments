@@ -8,16 +8,18 @@ onready var _shooters = $Game/Shooters
 var _turn_number:int = 1
 
 func _ready():
-	_fuel_gauge.max_value = _player.MAX_FUEL
+	if Features.limited_fuel:
+		_fuel_gauge.max_value = _player.MAX_FUEL
 
 func _on_Player_used_fuel(fuel_left:float, delta:float):
-	_fuel_gauge.value = fuel_left
-	
-	# Tell monsters to move
-	if delta > 0:
-		for shooter in _shooters.get_children():
-			if shooter.has_method("receive_time"):
-				shooter.receive_time(delta)
+	if Features.limited_fuel:	
+		_fuel_gauge.value = fuel_left
+		
+		# Tell monsters to move
+		if delta > 0:
+			for shooter in _shooters.get_children():
+				if shooter.has_method("receive_time"):
+					shooter.receive_time(delta)
 				
 func _on_Player_turn_over():
 	# TODO: do stuff, like increment points, apply AI, etc. first

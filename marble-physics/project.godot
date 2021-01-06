@@ -19,6 +19,10 @@ config/name="Marble Physics"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Features="*res://Features.gd"
+
 [display]
 
 window/size/width=1600
