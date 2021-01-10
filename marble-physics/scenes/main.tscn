@@ -66,35 +66,35 @@ position = Vector2( 89.8774, 96 )
 [node name="Bumpers" type="Node2D" parent="Game"]
 
 [node name="Bumper" parent="Game/Bumpers" instance=ExtResource( 3 )]
-modulate = Color( 0.882353, 0.439216, 0.439216, 1 )
 position = Vector2( 574, 56 )
 
+[node name="Bumper3" parent="Game/Bumpers" instance=ExtResource( 3 )]
+position = Vector2( 144, 261 )
+
+[node name="Bumper5" parent="Game/Bumpers" instance=ExtResource( 3 )]
+position = Vector2( 787.82, 459 )
+
+[node name="Bumper7" parent="Game/Bumpers" instance=ExtResource( 3 )]
+position = Vector2( 281, 191 )
+
 [node name="Bumper2" parent="Game/Bumpers" instance=ExtResource( 3 )]
+modulate = Color( 0.235294, 0.729412, 1, 1 )
 position = Vector2( 972, 128 )
 damages_player = false
 
-[node name="Bumper3" parent="Game/Bumpers" instance=ExtResource( 3 )]
-modulate = Color( 0.882353, 0.439216, 0.439216, 1 )
-position = Vector2( 144, 261 )
-
 [node name="Bumper4" parent="Game/Bumpers" instance=ExtResource( 3 )]
+modulate = Color( 0.235294, 0.729412, 1, 1 )
 position = Vector2( 473, 532 )
 damages_player = false
 
-[node name="Bumper5" parent="Game/Bumpers" instance=ExtResource( 3 )]
-modulate = Color( 0.882353, 0.439216, 0.439216, 1 )
-position = Vector2( 787.82, 459 )
-
-[node name="Bumper6" parent="Game/Bumpers" instance=ExtResource( 3 )]
-position = Vector2( 608.82, 244.666 )
+[node name="Bumper8" parent="Game/Bumpers" instance=ExtResource( 3 )]
+modulate = Color( 0.235294, 0.729412, 1, 1 )
+position = Vector2( 261, 459 )
 damages_player = false
 
-[node name="Bumper7" parent="Game/Bumpers" instance=ExtResource( 3 )]
-modulate = Color( 0.882353, 0.439216, 0.439216, 1 )
-position = Vector2( 281, 191 )
-
-[node name="Bumper8" parent="Game/Bumpers" instance=ExtResource( 3 )]
-position = Vector2( 261, 459 )
+[node name="Bumper6" parent="Game/Bumpers" instance=ExtResource( 3 )]
+modulate = Color( 0.235294, 0.729412, 1, 1 )
+position = Vector2( 608.82, 244.666 )
 damages_player = false
 
 [node name="Walls" type="Node2D" parent="Game"]
