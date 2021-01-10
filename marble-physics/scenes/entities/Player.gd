@@ -15,6 +15,9 @@ var decay:float = 0.01 # % per tick
 var _fuel_left:float = MAX_FUEL
 var _speed_label:Label
 
+func _ready():
+	self.add_to_group("Player")
+
 func setup(speed_label:Label) -> void:
 	self._speed_label = speed_label
 
