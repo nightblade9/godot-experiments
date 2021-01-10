@@ -3,7 +3,7 @@ extends Node2D
 onready var _fuel_gauge = $UI/FuelBar
 onready var _player = $Game/Player
 onready var _turn_label = $UI/TurnLabel
-onready var _shooters = $Game/Shooters
+#onready var _shooters = $Game/Shooters
 
 var _turn_number:int = 1
 
@@ -16,10 +16,10 @@ func _on_Player_used_fuel(fuel_left:float, delta:float):
 		_fuel_gauge.value = fuel_left
 		
 		# Tell monsters to move
-		if delta > 0:
-			for shooter in _shooters.get_children():
-				if shooter.has_method("receive_time"):
-					shooter.receive_time(delta)
+#		if delta > 0:
+#			for shooter in _shooters.get_children():
+#				if shooter.has_method("receive_time"):
+#					shooter.receive_time(delta)
 				
 func _on_Player_turn_over():
 	# TODO: do stuff, like increment points, apply AI, etc. first
