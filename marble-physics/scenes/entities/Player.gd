@@ -90,11 +90,11 @@ func _physics_process(delta):
 		if collision.collider.has_method("hit"):
 			collision.collider.hit()
 
-func on_collide():
+func on_collide(take_damage:bool) -> void:
 	# Called when we collide with bumpers
 	self.velocity = self.velocity * (1 - _COLLISION_VELOCITY_LOSS_PERCENTAGE)
 	
-	if Features.has_health and not self._invincible:
+	if Features.has_health and take_damage and not self._invincible:
 		var hit_on = OS.get_system_time_msecs()
 		var hit_time = (hit_on - self._last_hit_on) / 1000.0
 		if hit_time >= _POST_HIT_INVINCIBILITY_SECONDS:

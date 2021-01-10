@@ -2,6 +2,8 @@ extends RigidBody2D
 
 const Player = preload("res://scenes/entities/Player.gd")
 
+export var damages_player:bool = true
+
 const _PLAYER_HIT_DAMAGE = 40
 const _BUMPER_HIT_DAMAGE = 25
 const _ENVIRONMENT_HIT_DAMAGE = 10
@@ -17,7 +19,7 @@ func _physics_process(_delta):
 
 func _on_Bumper_body_entered(body):
 	if body.has_method("on_collide"):
-		body.on_collide()
+		body.on_collide(damages_player)
 		
 	if Features.enemies_die:
 		if body is Player:
