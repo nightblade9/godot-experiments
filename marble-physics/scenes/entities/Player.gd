@@ -15,6 +15,13 @@ var decay:float = 0.01 # % per tick
 var _fuel_left:float = MAX_FUEL
 var _speed_label:Label
 
+##### experiment
+var _total_health = 10
+var _health = self._total_health
+var _last_hit_on = 0
+var _invincible:bool = false
+const _POST_HIT_INVINCIBILITY_SECONDS:float = 2.5
+
 func _ready():
 	self.add_to_group("Player")
 
@@ -23,8 +30,24 @@ func setup(speed_label:Label) -> void:
 
 func reset_fuel():
 	_fuel_left = MAX_FUEL
+	
+func _process(_delta) -> void:
+	if self._invincible:
+		var hit_on = OS.get_system_time_msecs()
+		var hit_time = (hit_on - self._last_hit_on) / 1000
+		if hit_time < _POST_HIT_INVINCIBILITY_SECONDS:
+			self.modulate = Color(1, 0.7, 0.4, 0.5) # faded-out red
+		else:
+			self._invincible = false
+			self.modulate = Color(1, 1, 1, 1)
 
 func _physics_process(delta):
+	var display_speed:int = velocity.length() / 10 # tops up around 90-95
+	_speed_label.text = "Speed: %s" % display_speed
+	
+	if Features.has_health:
+		_speed_label.text = "%s/%s" % [self._health, self._total_health]
+	
 	var consume_fuel = false
 	
 	if _fuel_left > 0:
@@ -45,9 +68,6 @@ func _physics_process(delta):
 		if Features.limited_fuel and consume_fuel:
 			_fuel_left -= delta * _FUEL_CONSUMPTION_RATE
 			emit_signal("used_fuel", _fuel_left, delta)
-	
-	var display_speed:int = velocity.length() / 10 # tops up around 90-95
-	_speed_label.text = "Speed: %s" % display_speed
 		
 	velocity = velocity * (1 - decay)
 	# Out of fuel? Slow to a stop
@@ -69,3 +89,17 @@ func _physics_process(delta):
 func on_collide():
 	# Called when we collide with bumpers
 	self.velocity = self.velocity * (1 - _COLLISION_VELOCITY_LOSS_PERCENTAGE)
+	
+	if Features.has_health and not self._invincible:
+		var hit_on = OS.get_system_time_msecs()
+		var hit_time = (hit_on - self._last_hit_on) / 1000.0
+		if hit_time >= _POST_HIT_INVINCIBILITY_SECONDS:
+			self._health -= 3
+			self._last_hit_on = hit_on
+			
+			if self._health <= 0:
+				self.queue_free()
+				print("You LOSE, loser!")
+			else:
+				self._invincible = true
+				
