@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/entities/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/Player.tscn" type="PackedScene" id=2]
@@ -40,6 +40,10 @@ bg_color = Color( 1, 0.866667, 0, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
@@ -171,6 +175,20 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ConclusionLabel" type="Label" parent="UI"]
+visible = false
+margin_left = 574.0
+margin_top = 347.921
+margin_right = 1226.0
+margin_bottom = 425.921
+custom_fonts/font = SubResource( 4 )
+text = "VCITORY OR DEFEAT?!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="died" from="Game/Player" to="." method="_on_Player_died"]
 [connection signal="turn_over" from="Game/Player" to="." method="_on_Player_turn_over"]
 [connection signal="used_fuel" from="Game/Player" to="." method="_on_Player_used_fuel"]
+[connection signal="victory" from="Game/Goal" to="." method="_on_Goal_victory"]
 [connection signal="pressed" from="UI/ResetButton" to="UI/ResetButton" method="_on_ResetButton_pressed"]

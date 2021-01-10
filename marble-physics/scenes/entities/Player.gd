@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal used_fuel # emits fuel_left
 signal turn_over
+signal died
 
 const MAX_FUEL:int = 100
 const _SPEED:int = 10
@@ -20,7 +21,7 @@ var _total_health = 10
 var _health = self._total_health
 var _last_hit_on = 0
 var _invincible:bool = false
-const _POST_HIT_INVINCIBILITY_SECONDS:float = 2.5
+const _POST_HIT_INVINCIBILITY_SECONDS:float = 1.0
 
 func _ready():
 	self.add_to_group("Player")
@@ -31,6 +32,9 @@ func setup(speed_label:Label) -> void:
 func reset_fuel():
 	_fuel_left = MAX_FUEL
 	
+func get_health_percent() -> float:
+	return 1.0 * _health / _total_health
+
 func _process(_delta) -> void:
 	if self._invincible:
 		var hit_on = OS.get_system_time_msecs()
@@ -98,8 +102,8 @@ func on_collide():
 			self._last_hit_on = hit_on
 			
 			if self._health <= 0:
+				emit_signal("died")
 				self.queue_free()
-				print("You LOSE, loser!")
 			else:
 				self._invincible = true
 				
