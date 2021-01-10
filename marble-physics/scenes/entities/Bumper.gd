@@ -16,6 +16,9 @@ func _physics_process(_delta):
 	self.rotation_degrees = 0 # never rotate, throws off UI, firing, etc.
 
 func _on_Bumper_body_entered(body):
+	if body.has_method("on_collide"):
+		body.on_collide()
+		
 	if Features.enemies_die:
 		if body is Player:
 			_health_bar.value -= _PLAYER_HIT_DAMAGE

@@ -7,6 +7,7 @@ const MAX_FUEL:int = 100
 const _SPEED:int = 10
 const _FUEL_CONSUMPTION_RATE:int = 50 # n * delta per tick
 const _STOP_VELOCITY_AMPLITUDE:int = 10
+const _COLLISION_VELOCITY_LOSS_PERCENTAGE:float = 0.5 # 0.3 => lose 30% velocity on bumper hit
 
 var velocity:Vector2
 var decay:float = 0.01 # % per tick
@@ -48,8 +49,13 @@ func _physics_process(delta):
 	# self.move_and_slide(velocity)
 
 	# bounce code from: https://docs.godotengine.org/en/3.2/tutorials/physics/using_kinematic_body_2d.html#bouncing-reflecting
+	# bounce off of walls
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.normal)
 		if collision.collider.has_method("hit"):
 			collision.collider.hit()
+
+func on_collide():
+	# Called when we collide with bumpers
+	self.velocity = self.velocity * (1 - _COLLISION_VELOCITY_LOSS_PERCENTAGE)

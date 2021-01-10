@@ -21,7 +21,7 @@ func _on_Range_body_exited(_body):
 		print("%s unlocked" % self)
 		_target =  null
 	
-func receive_time(delta:float) -> void:
+func receive_time(_delta:float) -> void:
 	if Features.enemies_shoot:
 		var now = OS.get_ticks_msec()
 		if _target != null and now - _last_shot >= _SHOOT_DELAY_MILLISECONDS:
