@@ -13,6 +13,10 @@ var velocity:Vector2
 var decay:float = 0.01 # % per tick
 
 var _fuel_left:float = MAX_FUEL
+var _speed_label:Label
+
+func setup(speed_label:Label) -> void:
+	self._speed_label = speed_label
 
 func reset_fuel():
 	_fuel_left = MAX_FUEL
@@ -38,6 +42,9 @@ func _physics_process(delta):
 		if Features.limited_fuel and consume_fuel:
 			_fuel_left -= delta * _FUEL_CONSUMPTION_RATE
 			emit_signal("used_fuel", _fuel_left, delta)
+	
+	var display_speed:int = velocity.length() / 10 # tops up around 90-95
+	_speed_label.text = "Speed: %s" % display_speed
 		
 	velocity = velocity * (1 - decay)
 	# Out of fuel? Slow to a stop

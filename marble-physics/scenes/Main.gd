@@ -13,9 +13,11 @@ func _ready():
 	else:
 		_fuel_gauge.visible = false
 		_turn_label.visible = false
+	
+	_player.setup($UI/SpeedLabel)
 		
 func _on_Player_used_fuel(fuel_left:float, delta:float):
-	if Features.limited_fuel:	
+	if Features.limited_fuel:
 		_fuel_gauge.value = fuel_left
 		
 		# Tell monsters to move
@@ -27,8 +29,6 @@ func _on_Player_used_fuel(fuel_left:float, delta:float):
 func _on_Player_turn_over():
 	# TODO: do stuff, like increment points, apply AI, etc. first
 	# THEN, after AIs etc. are all done, reset to next turn.
-	
-	
 	_player.reset_fuel()
 	_on_Player_used_fuel(_player.MAX_FUEL, 0) # reset gauge
 	
