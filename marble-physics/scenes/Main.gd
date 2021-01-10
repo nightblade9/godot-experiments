@@ -10,7 +10,10 @@ var _turn_number:int = 1
 func _ready():
 	if Features.limited_fuel:
 		_fuel_gauge.max_value = _player.MAX_FUEL
-
+	else:
+		_fuel_gauge.visible = false
+		_turn_label.visible = false
+		
 func _on_Player_used_fuel(fuel_left:float, delta:float):
 	if Features.limited_fuel:	
 		_fuel_gauge.value = fuel_left
