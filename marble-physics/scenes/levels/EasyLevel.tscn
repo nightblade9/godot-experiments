@@ -50,11 +50,11 @@ position = Vector2( 684.754, 308.768 )
 rotation = -0.785398
 
 [node name="Wall11" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1340.75, 588.768 )
-rotation = -0.785398
+position = Vector2( 1340.75, 300.768 )
+rotation = 0.785398
 
 [node name="OuchBumper" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1172.56, 801.526 )
+position = Vector2( 1058.82, 785.192 )
 
 [node name="OuchBumper2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1024, 663.578 )

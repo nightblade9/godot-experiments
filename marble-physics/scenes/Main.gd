@@ -13,6 +13,7 @@ const _SCORE_MULTIPLIER:int = 500
 var _turn_number:int = 1
 var _raw_time_seconds:float = 0
 var _current_level = 0
+var _level
 
 var _levels = [
 	preload("res://scenes/levels/EasyLevel.tscn"),
@@ -33,34 +34,29 @@ func _ready():
 func _load_current_level() -> void:
 	_load_level(_current_level)
 	
-	_players = $Game/Level/Players
-	_goal = $Game/Level/Goal
+	_players = _level.get_node("Players")
+	_goal = _level.get_node("Goal")
 	_camera = $Game/SmartCamera
+	
+	_camera.position = Vector2.ZERO
+	_camera.follow(_players.get_children())
 	
 	for player in _players.get_children():
 		player.setup($UI/SpeedLabel)
 	
 	_goal.expect_players(_players.get_child_count())
-	_goal.connect("victory", self, "_on_Goal_victory")
+	if not _goal.is_connected("victory", self, "_on_Goal_victory"):
+		_goal.connect("victory", self, "_on_Goal_victory")
 	
 func _load_level(index:int) -> void:
 	var clazz = _levels[index]
 	var instance = clazz.instance()
 	instance.name = "Level"
 	$Game.add_child(instance)
+	_level = instance
 
 func _process(delta):
 	_raw_time_seconds += delta
-	
-	if _players.get_child_count() == 1:
-		_camera.position = _players.get_child(0).position
-	else:
-		var average_position = Vector2.ZERO
-		for player in _players.get_children():
-			average_position += player.position
-		average_position /= _players.get_child_count()
-		
-		_camera.position = average_position
 	
 func _on_Player_used_fuel(fuel_left:float, delta:float):
 	if Features.limited_fuel:
@@ -91,8 +87,9 @@ func _on_Goal_victory():
 	
 	var health_percent = total_health / _players.get_child_count()
 	
-	if _current_level < len(_levels):
+	if _current_level < len(_levels) - 1:
 		_current_level += 1
+		_level.queue_free()
 		call_deferred("_on_next_level")
 	else:
 		$UI/ConclusionLabel.text = ("YOU WIN!")
