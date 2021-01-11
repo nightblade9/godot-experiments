@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/entities/Bumper.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/WallSmall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entities/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/OuchBumper.tscn" type="PackedScene" id=6]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.5
+
+[node name="Level" type="Node2D"]
+
+[node name="Bumpers" type="Node2D" parent="."]
+
+[node name="Bumper2" parent="Bumpers" instance=ExtResource( 1 )]
+position = Vector2( 972, 128 )
+physics_material_override = SubResource( 1 )
+
+[node name="Bumper4" parent="Bumpers" instance=ExtResource( 1 )]
+position = Vector2( 473, 532 )
+physics_material_override = SubResource( 1 )
+
+[node name="Bumper8" parent="Bumpers" instance=ExtResource( 1 )]
+position = Vector2( 261, 459 )
+physics_material_override = SubResource( 1 )
+
+[node name="Bumper6" parent="Bumpers" instance=ExtResource( 1 )]
+position = Vector2( 608.82, 244.666 )
+physics_material_override = SubResource( 1 )
+
+[node name="OuchBumper" parent="Bumpers" instance=ExtResource( 6 )]
+position = Vector2( 73.8774, 244.666 )
+
+[node name="OuchBumper2" parent="Bumpers" instance=ExtResource( 6 )]
+position = Vector2( 404.477, 128 )
+
+[node name="OuchBumper3" parent="Bumpers" instance=ExtResource( 6 )]
+position = Vector2( 723.185, 351.571 )
+
+[node name="OuchBumper4" parent="Bumpers" instance=ExtResource( 6 )]
+position = Vector2( 787.82, 532 )
+
+[node name="Walls" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 512, 0 )
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 512, 600 )
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 0, 300 )
+rotation = 1.5708
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 0, 300 )
+rotation = 1.5708
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 1024, 300 )
+rotation = 1.5708
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 178.82, 112 )
+rotation = 1.0472
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 217.35, 350.761 )
+rotation = -0.523599
+
+[node name="Wall8" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 546.239, 427 )
+rotation = 1.5708
+
+[node name="Wall9" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 787.82, 159 )
+rotation = 1.5708
+
+[node name="Wall10" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 787.82, 159 )
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 952, 528 )
+
+[node name="Players" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="Players" instance=ExtResource( 5 )]
+position = Vector2( 89.8774, 96 )
+
+[node name="Player2" parent="Players" instance=ExtResource( 5 )]
+position = Vector2( 225.877, 96 )
+
+[node name="Player3" parent="Players" instance=ExtResource( 5 )]
+position = Vector2( 249, 293 )
