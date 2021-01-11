@@ -65,9 +65,11 @@ position = Vector2( 905.079, 815.192 )
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1465.1, 798.857 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource( 5 )]
 position = Vector2( 80.8661, 90.3798 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Players/Player"]
 current = true
 zoom = Vector2( 0.5, 0.5 )

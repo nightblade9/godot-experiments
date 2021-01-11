@@ -6,6 +6,7 @@ var _players_left:int = 1
 
 func expect_players(n:int) -> void:
 	_players_left = n
+	print("Expecting %s players" % n)
 
 func _on_Goal_body_entered(body:PhysicsBody2D):
 	if body.is_in_group("Player"):
