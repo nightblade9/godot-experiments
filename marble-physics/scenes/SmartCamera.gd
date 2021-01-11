@@ -6,7 +6,7 @@ func follow(players) -> void:
 	_players = players
 
 func _process(delta):
-	if len(_players) == 1:
+	if len(_players) == 1 and _players[0] != null:
 		self.position = _players[0].position
 	else:
 		var count = 0
