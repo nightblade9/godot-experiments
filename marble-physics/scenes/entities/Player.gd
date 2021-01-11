@@ -47,10 +47,11 @@ func _process(_delta) -> void:
 
 func _physics_process(delta):
 	var display_speed:int = velocity.length() / 10 # tops up around 90-95
-	_speed_label.text = "Speed: %s" % display_speed
+	if _speed_label != null:
+		_speed_label.text = "Speed: %s" % display_speed
 	
-	if Features.has_health:
-		_speed_label.text = "%s/%s" % [self._health, self._total_health]
+		if Features.has_health:
+			_speed_label.text = "%s/%s" % [self._health, self._total_health]
 	
 	var consume_fuel = false
 	
