@@ -146,6 +146,17 @@ position = Vector2( 89.8774, 96 )
 [node name="Player2" parent="Game/Level/Players" instance=ExtResource( 2 )]
 position = Vector2( 225.877, 96 )
 
+[node name="Player3" parent="Game/Level/Players" instance=ExtResource( 2 )]
+position = Vector2( 249, 293 )
+
+[node name="Camera2D" type="Camera2D" parent="Game"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="FuelBar" type="ProgressBar" parent="UI"]
@@ -209,4 +220,7 @@ __meta__ = {
 [connection signal="died" from="Game/Level/Players/Player2" to="." method="_on_Player_died"]
 [connection signal="turn_over" from="Game/Level/Players/Player2" to="." method="_on_Player_turn_over"]
 [connection signal="used_fuel" from="Game/Level/Players/Player2" to="." method="_on_Player_used_fuel"]
+[connection signal="died" from="Game/Level/Players/Player3" to="." method="_on_Player_died"]
+[connection signal="turn_over" from="Game/Level/Players/Player3" to="." method="_on_Player_turn_over"]
+[connection signal="used_fuel" from="Game/Level/Players/Player3" to="." method="_on_Player_used_fuel"]
 [connection signal="pressed" from="UI/ResetButton" to="UI/ResetButton" method="_on_ResetButton_pressed"]

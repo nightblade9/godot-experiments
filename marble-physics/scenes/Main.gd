@@ -26,6 +26,16 @@ func _ready():
 func _process(delta):
 	_raw_time_seconds += delta
 	
+	if _players.get_child_count() == 1:
+		$Game/Camera2D.position = _players.get_child(0).position
+	else:
+		var average_position = Vector2.ZERO
+		for player in _players.get_children():
+			average_position += player.position
+		average_position /= _players.get_child_count()
+		
+		$Game/Camera2D.position = average_position
+	
 func _on_Player_used_fuel(fuel_left:float, delta:float):
 	if Features.limited_fuel:
 		_fuel_gauge.value = fuel_left
