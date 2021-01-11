@@ -54,13 +54,28 @@ position = Vector2( 1340.75, 300.768 )
 rotation = 0.785398
 
 [node name="OuchBumper" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1058.82, 785.192 )
+position = Vector2( 1026.82, 347.564 )
 
 [node name="OuchBumper2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1024, 663.578 )
+position = Vector2( 1022.64, 255.788 )
+
+[node name="OuchBumper7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1099.47, 196.328 )
+
+[node name="OuchBumper8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1194.61, 196.328 )
 
 [node name="OuchBumper3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 905.079, 815.192 )
+position = Vector2( 986.46, 446.538 )
+
+[node name="OuchBumper4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 950.281, 536.918 )
+
+[node name="OuchBumper5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 883.685, 598.756 )
+
+[node name="OuchBumper6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 847.505, 686.758 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1465.1, 798.857 )

@@ -99,7 +99,9 @@ func on_collide(take_damage:bool) -> void:
 		var hit_on = OS.get_system_time_msecs()
 		var hit_time = (hit_on - self._last_hit_on) / 1000.0
 		if hit_time >= _POST_HIT_INVINCIBILITY_SECONDS:
-			self._health -= 3
+			self._health -= 5
+			if self._health <= 5:
+				$Sprite.texture = load("res://assets/images/player-cracked.png")
 			self._last_hit_on = hit_on
 			
 			if self._health <= 0:
