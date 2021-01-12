@@ -50,9 +50,6 @@ func _physics_process(delta):
 	if _speed_label != null:
 		_speed_label.text = "Speed: %s" % display_speed
 	
-		if Features.has_health:
-			_speed_label.text = "%s/%s" % [self._health, self._total_health]
-	
 	var consume_fuel = false
 	
 	if _fuel_left > 0:

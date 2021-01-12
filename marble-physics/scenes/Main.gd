@@ -3,7 +3,7 @@ extends Node2D
 onready var _fuel_gauge = $UI/FuelBar
 onready var _turn_label = $UI/TurnLabel
 
-var _players
+var _player
 var _goal
 var _camera
 
@@ -24,7 +24,7 @@ var _levels = [
 
 func _ready():
 	if Features.limited_fuel:
-		_fuel_gauge.max_value = _players.get_child(0).MAX_FUEL
+		_fuel_gauge.max_value = _player.MAX_FUEL
 	else:
 		_fuel_gauge.visible = false
 		_turn_label.visible = false
@@ -34,17 +34,16 @@ func _ready():
 func _load_current_level() -> void:
 	_load_level(_current_level)
 	
-	_players = _level.get_node("Players")
+	_player = _level.get_node("Player")
 	_goal = _level.get_node("Goal")
 	_camera = $Game/SmartCamera
 	
 	_camera.position = Vector2.ZERO
-	_camera.follow(_players.get_children())
+	_camera.follow(_player)
 	
-	for player in _players.get_children():
-		player.setup($UI/SpeedLabel)
+	_player.setup($UI/SpeedLabel)
+	_player.connect("died", self, "_on_Player_died")
 	
-	_goal.expect_players(_players.get_child_count())
 	if not _goal.is_connected("victory", self, "_on_Goal_victory"):
 		_goal.connect("victory", self, "_on_Goal_victory")
 	
@@ -71,22 +70,13 @@ func _on_Player_used_fuel(fuel_left:float, delta:float):
 func _on_Player_turn_over():
 	# TODO: do stuff, like increment points, apply AI, etc. first
 	# THEN, after AIs etc. are all done, reset to next turn.
-	for player in _players:
-		player.reset_fuel()
-	_on_Player_used_fuel(_players.get_child(0).MAX_FUEL, 0) # reset gauge
+	_player.reset_fuel()
+	_on_Player_used_fuel(_player.MAX_FUEL, 0) # reset guage
 	
 	_turn_number += 1
 	_turn_label.text = "Turn %s - Fuel: " % _turn_number
 
 func _on_Goal_victory():
-	var total_health = 0.0
-	
-	for player in _players.get_children():
-		total_health += player.get_health_percent()
-		player.queue_free()
-	
-	var health_percent = total_health / _players.get_child_count()
-	
 	if _current_level < len(_levels) - 1:
 		_current_level += 1
 		_level.queue_free()

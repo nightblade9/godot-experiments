@@ -12,6 +12,9 @@ bounce = 0.5
 
 [node name="Level" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 89.8774, 96 )
+
 [node name="Bumpers" type="Node2D" parent="."]
 
 [node name="Bumper2" parent="Bumpers" instance=ExtResource( 1 )]
@@ -86,17 +89,3 @@ position = Vector2( 787.82, 159 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 952, 528 )
-
-[node name="Players" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Player" parent="Players" instance=ExtResource( 5 )]
-position = Vector2( 89.8774, 96 )
-
-[node name="Player2" parent="Players" instance=ExtResource( 5 )]
-position = Vector2( 225.877, 96 )
-
-[node name="Player3" parent="Players" instance=ExtResource( 5 )]
-position = Vector2( 249, 293 )
