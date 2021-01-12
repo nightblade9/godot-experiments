@@ -46,9 +46,8 @@ func _process(_delta) -> void:
 			self.modulate = Color(1, 1, 1, 1)
 
 func _physics_process(delta):
-	var display_speed:int = velocity.length() / 10 # tops up around 90-95
 	if _speed_label != null:
-		_speed_label.text = "Speed: %s" % display_speed
+		_speed_label.text = "Speed: %s" % self.get_speed()	
 	
 	var consume_fuel = false
 	
@@ -107,3 +106,11 @@ func on_collide(take_damage:bool) -> void:
 			else:
 				self._invincible = true
 				
+func get_speed() -> int:
+	var display_speed:int = velocity.length() / 10 # tops up around 90-95
+	return display_speed
+
+func show_too_slow():
+	$TooSlowLabel.visible = true
+	yield(get_tree().create_timer(1), "timeout")
+	$TooSlowLabel.visible = false	

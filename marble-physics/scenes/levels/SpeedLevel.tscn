@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/entities/WallSmall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/OuchBumper.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entities/Goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/SpeedWall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entities/Bumper.tscn" type="PackedScene" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Walls" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 512, 4 )
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 1099.47, 4 )
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 512, 900 )
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 1099.47, 900 )
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 0, 448 )
+rotation = 1.5708
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 1608, 448 )
+rotation = 1.5708
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 757.13, 286.039 )
+rotation = 0.785398
+
+[node name="Goal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1465.1, 798.857 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80.8661, 90.3798 )
+
+[node name="SpeedWall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1327.16, 658.821 )
+rotation = -0.785398
+
+[node name="SpeedWall2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 337.735, 74.3798 )
+rotation = 1.5708
+
+[node name="OuchBumper" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1405.64, 318.708 )
+
+[node name="OuchBumper2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1369.46, 204.544 )
+
+[node name="OuchBumper3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1060.27, 766.857 )
+
+[node name="OuchBumper5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 789.13, 204.544 )
+
+[node name="OuchBumper6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 667.831, 334.373 )
+
+[node name="OuchBumper4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 962.755, 830.857 )
+
+[node name="Bumper" parent="." instance=ExtResource( 7 )]
+position = Vector2( 80.8661, 236.544 )
+
+[node name="Bumper4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 488.656, 108.641 )
+
+[node name="Bumper2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 234.382, 188.209 )
+
+[node name="Bumper3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 456.656, 750.523 )
