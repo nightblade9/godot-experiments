@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/entities/Magnet.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 96.0
+
+[node name="Magnet" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="Polygon2D" parent="."]
+position = Vector2( 0.370825, -0.284254 )
+scale = Vector2( 1.53132, 1.53132 )
+color = Color( 0.509804, 0.137255, 0.792157, 0.501961 )
+polygon = PoolVector2Array( 1.03912, -64.3728, 34.6342, -54.2646, 57.5265, -25.7236, 64.6617, -2.53408, 59.3103, 24.5204, 46.229, 44.1423, 23.0394, 59.602, 0.444519, 63.7642, -27.5018, 57.8182, -42.0696, 46.818, -55.7455, 32.8448, -62.2861, 17.6824, -64.3673, -2.53408, -57.5293, -24.5344, -45.34, -46.2374, -25.718, -58.7241 )
+[connection signal="body_entered" from="." to="." method="_on_Magnet_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Magnet_body_exited"]

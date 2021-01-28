@@ -12,7 +12,7 @@ var _camera
 const _SCORE_MULTIPLIER:int = 500
 var _turn_number:int = 1
 var _raw_time_seconds:float = 0
-var _current_level = 3
+var _current_level = 0
 var _level
 
 var _levels = [

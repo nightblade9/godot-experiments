@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const _BREAK_SPEED:int = 90 # pretty high, hard to achieve
+const _BREAK_SPEED:int = 80 # pretty high, hard to achieve
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
