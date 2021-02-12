@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float time = 0;
+uniform float time : hint_range(-7, 7) = 0;
 
 void fragment() {
 	vec4 color = texture(TEXTURE, UV);
