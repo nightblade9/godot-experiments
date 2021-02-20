@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Slime-Forest.png" type="Texture" id=1]
 [ext_resource path="res://Attempt1.shader" type="Shader" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
+shader_param/time = 10.0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Slime-Forest" type="Sprite" parent="."]
 material = SubResource( 1 )
