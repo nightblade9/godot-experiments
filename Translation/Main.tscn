@@ -30,10 +30,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 771.0
-margin_top = 72.0
-margin_right = 1023.0
-margin_bottom = 163.0
+margin_left = 590.0
+margin_top = 53.0
+margin_right = 862.0
+margin_bottom = 144.0
 rect_pivot_offset = Vector2( -324, -100 )
 custom_fonts/font = ExtResource( 1 )
 text = "ARABIC"

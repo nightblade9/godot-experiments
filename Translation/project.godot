@@ -21,8 +21,8 @@ config/icon="res://icon.png"
 
 [locale]
 
-translations=PoolStringArray( "res://strings.en.translation", "res://strings.ar.translation" )
-locale_filter=[ 0, [ "ar", "en" ] ]
+translations=PoolStringArray( "res://strings.en_US.translation", "res://strings.ar_SA.translation" )
+locale_filter=[ 0, [ "ar_SA", "en_US" ] ]
 
 [rendering]
 
