@@ -4,3 +4,4 @@
 *.suo
 **/Godot/Plugins/*
 **/.import
+*.translation
