@@ -8,20 +8,15 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-}
-
 [application]
 
-config/name="Earthbound-BG"
+config/name="light-masking"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
-[display]
+[physics]
 
-window/size/width=960
-window/size/height=576
+common/enable_pause_aware_picking=true
 
 [rendering]
 
