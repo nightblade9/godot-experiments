@@ -19,7 +19,7 @@ position = Vector2( 309.632, 68.7076 )
 position = Vector2( 9.08832, 55.9045 )
 
 [node name="OpponentInventory" parent="." instance=ExtResource( 3 )]
-position = Vector2( 740.695, 53.6324 )
+position = Vector2( 980.695, 53.6324 )
 
 [node name="PlayerPoints" type="Label" parent="."]
 margin_right = 505.0
@@ -28,8 +28,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Player: 0"
 
 [node name="OpponentPoints" type="Label" parent="."]
-margin_left = 510.0
-margin_right = 1015.0
+margin_left = 750.0
+margin_right = 1255.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 1 )
 text = "Opponent: 0"

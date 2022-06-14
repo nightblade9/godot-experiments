@@ -3,7 +3,6 @@ extends Node2D
 var Data = preload("res://Data.gd").new()
 var Turn = preload("res://Turn.gd")
 
-const NUM_CARDS = 5
 
 var _player_cards = []
 var _opponent_cards = []
@@ -12,6 +11,8 @@ var _player_points = 0
 var _opponent_points = 0
 
 func _ready():
+	randomize()
+
 	self._pick_cards_into(_player_cards)
 	self._pick_cards_into(_opponent_cards)
 	
@@ -21,7 +22,7 @@ func _ready():
 	$Board.connect("points_earned", self, "_on_points_earned")
 	
 func _pick_cards_into(cards):
-	while len(cards) < NUM_CARDS:
+	while len(cards) < Constants.DECK_SIZE:
 		# dupes are fine
 		var card = Data.ALL_CARDS[randi() % len(Data.ALL_CARDS)]
 		cards.append(card)

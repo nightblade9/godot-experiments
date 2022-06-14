@@ -20,8 +20,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://Globals.gd"
+Constants="*res://scripts/Constants.gd"
+Features="*res://scripts/Features.gd"
 
 [display]
 
-window/size/height=650
+window/size/width=1280
+window/size/height=720

@@ -6,15 +6,12 @@ signal board_clicked
 signal points_earned
 
 func _ready():
-	for y in range(Globals.BOARD_HEIGHT):
-		for x in range(Globals.BOARD_WIDTH):
+	for y in range(Constants.BOARD_HEIGHT):
+		for x in range(Constants.BOARD_WIDTH):
 			var slot = BoardSlot.instance()
 			add_child(slot)
 			
-			slot.margin_left = x * Globals.CARD_WIDTH
-			slot.margin_right = (x + 1) * Globals.CARD_WIDTH
-			slot.margin_top = y * Globals.CARD_HEIGHT
-			slot.margin_bottom = (y + 1) * Globals.CARD_HEIGHT
+			slot.resize_margins(x * Constants.CARD_WIDTH, y * Constants.CARD_HEIGHT)
 			slot.board_x = x
 			slot.board_y = y
 			

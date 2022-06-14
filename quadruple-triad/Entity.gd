@@ -26,7 +26,7 @@ func init(data):
 	$Down.text = str(data["down"])
 	$Left.text = str(data["left"])
 	
-	$LP.visible = Globals.ENABLE_LIFE_POINTS
+	$LP.visible = Features.ENABLE_LIFE_POINTS
 	$Sprite.region_rect.position = _SPRITES[data["name"]]
 
 func change_colour(owner):

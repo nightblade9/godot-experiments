@@ -4,7 +4,7 @@ var Data = preload("res://Data.gd").new()
 const Entity = preload("res://Entity.tscn")
 
 var data # dictionary eg. {"up": 8, ...}
-var slot_owner # Turn.Player or Turn.Opponent
+var self_owner # Turn.Player or Turn.Opponent
 
 var _clickable = true
 var _entity # Entity instance
@@ -16,11 +16,11 @@ export var board_y = -1
 signal pressed_who
 signal entity_placed
 
-func set_entity(data, slot_owner):
+func set_entity(data, self_owner):
 	# Change into an entity. No longer clickable.
 	self.data = data
-	self.slot_owner = slot_owner
-	self._original_colour = slot_owner
+	self.self_owner = self_owner
+	self._original_colour = self_owner
 	self._clickable = false
 	self._entity = Entity.instance()
 	self._entity.init(data)
@@ -30,7 +30,7 @@ func set_entity(data, slot_owner):
 func change_colour(new_owner, initializing = false):
 	var flip = false
 	
-	if Globals.ENABLE_LIFE_POINTS:
+	if Features.ENABLE_LIFE_POINTS:
 		if not initializing and self.data["lp"] > 0:
 			if new_owner != self._original_colour:
 				self.data["lp"] -= 1
@@ -42,13 +42,20 @@ func change_colour(new_owner, initializing = false):
 		flip = true
 		
 	if flip:
-		self.slot_owner = new_owner
+		self.self_owner = new_owner
 		self._entity.change_colour(new_owner)
 	
 	return flip
 
 func consume():
 	self.remove_child(self._entity)
+
+func resize_margins(x:int, y:int):
+	self.margin_left = x
+	self.margin_right = self.margin_left + Constants.CARD_WIDTH
+	self.margin_top = y
+	self.margin_bottom = self.margin_top + Constants.CARD_HEIGHT
+
 
 func _on_Button_pressed():
 	self.emit_signal("pressed_who", self)
