@@ -1,6 +1,6 @@
 extends Node2D
 
-const Turn = preload("res://Turn.gd")
+const Turn = preload("res://scripts/enums/Turn.gd")
 
 const OPPONENT_COLOUR = Color(0.5, 0, 0)
 const PLAYER_COLOUR = Color(0, 0.25, 0.5)

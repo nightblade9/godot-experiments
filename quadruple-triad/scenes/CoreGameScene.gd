@@ -1,7 +1,7 @@
 extends Node2D
 
-var Data = preload("res://Data.gd").new()
-var Turn = preload("res://Turn.gd")
+var Data = preload("res://scripts/Data.gd").new()
+var Turn = preload("res://scripts/enums/Turn.gd")
 
 
 var _player_cards = []

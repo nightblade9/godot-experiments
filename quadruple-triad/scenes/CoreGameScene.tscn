@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://CoreGameScene.gd" type="Script" id=1]
-[ext_resource path="res://GameBoard.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ui/Inventory.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ui/GameBoard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/CoreGameScene.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/ZCOOLXiaoWei-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -10,15 +10,15 @@ size = 36
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
 position = Vector2( 309.632, 68.7076 )
 
-[node name="PlayerInventory" parent="." instance=ExtResource( 3 )]
+[node name="PlayerInventory" parent="." instance=ExtResource( 1 )]
 position = Vector2( 9.08832, 55.9045 )
 
-[node name="OpponentInventory" parent="." instance=ExtResource( 3 )]
+[node name="OpponentInventory" parent="." instance=ExtResource( 1 )]
 position = Vector2( 980.695, 53.6324 )
 
 [node name="PlayerPoints" type="Label" parent="."]

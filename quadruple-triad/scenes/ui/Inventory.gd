@@ -1,6 +1,6 @@
 extends Node2D
 
-const Slot = preload("res://BoardSlot.tscn")
+const Slot = preload("res://scenes/ui/BoardSlot.tscn")
 
 var selected_card
 var is_opponent

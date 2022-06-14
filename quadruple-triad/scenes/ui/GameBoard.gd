@@ -1,6 +1,6 @@
 extends Node2D
 
-const BoardSlot = preload("res://BoardSlot.tscn")
+const BoardSlot = preload("res://scenes/ui/BoardSlot.tscn")
 
 signal board_clicked
 signal points_earned
