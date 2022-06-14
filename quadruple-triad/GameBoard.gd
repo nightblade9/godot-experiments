@@ -1,15 +1,25 @@
 extends Node2D
 
+const BoardSlot = preload("res://BoardSlot.tscn")
+
 signal board_clicked
 signal points_earned
 
 func _ready():
-	# Stop trying to be so clever.
-	var children = self.get_children()
-	for node in children:
-		if node.name.find("Slot") > -1:
-			node.connect("pressed_who", self, "_on_slot_pressed")
-			node.connect("entity_placed", self, "_on_entity_placed")
+	for y in range(Globals.BOARD_HEIGHT):
+		for x in range(Globals.BOARD_WIDTH):
+			var slot = BoardSlot.instance()
+			add_child(slot)
+			
+			slot.margin_left = x * Globals.CARD_WIDTH
+			slot.margin_right = (x + 1) * Globals.CARD_WIDTH
+			slot.margin_top = y * Globals.CARD_HEIGHT
+			slot.margin_bottom = (y + 1) * Globals.CARD_HEIGHT
+			slot.board_x = x
+			slot.board_y = y
+			
+			slot.connect("pressed_who", self, "_on_slot_pressed")
+			slot.connect("entity_placed", self, "_on_entity_placed")
 
 func _on_slot_pressed(slot):
 	self.emit_signal("board_clicked", slot)
